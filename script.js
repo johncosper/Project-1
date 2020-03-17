@@ -39,4 +39,11 @@ function initMap() {
     center: {lat: userPosition.lat, lng: userPosition.lon},
     zoom: 12
   });
+
+  var marker = new google.maps.Marker( {
+    position: {lat: userPosition.lat, lng: userPosition.lon},
+    map: map,
+    title: 'User Location'
+  });
 }
+

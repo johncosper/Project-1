@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link type="text/css" href="apis.css">
+  <title>Api's</title>
+</head>
+
+<body>
+
+  <!-- Artist Select Box -->
+  <form id="city-form">
+
+    <!-- Label for Text Box -->
+    <label for="city-input">Choose Your City</label>
+
+    <!-- Text Input Box -->
+    <input type="text" id="city-input"><br><br>
+
+    <!-- Submit Button -->
+    <input id="weather-current" type="submit" value="Current Weather">
+  </form>
+
+  <!-- Artist Information -->
+  <div id="weather-div"></div>
+
+
+
+
+    <div class="data">
+
+        <div class="city"></div>
+        <div class="wind"></div>
+        <div class="humidity"></div>
+        <div class="temp"></div>
+
+
+    </div>
+
+
+    
+
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+    var latitude = "";
+    var longitude = "";
+
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position){
+                 latitude = position.coords.latitude;
+                 longitude = position.coords.longitude;
+            })
+        };
+
+
+
+
+
+
+  function searchWeather() {
+
+    // Querying the bandsintown api for the selected artist, the ?app_id parameter is required, but can equal anything
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?lat=" +latitude+ "&lon=" +longitude+ "&appid=11a5b7da9acdf60ccfba2ff6df117469";
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response) {
+
+      // Printing the entire object to console
+      console.log(response);
+
+
+// Transfer content to HTML
+$(".city").html("<h1>" + response.name + " Weather Details</h1>");
+        $(".wind").text("Wind Speed: " + response.wind.speed);
+        $(".humidity").text("Humidity: " + response.main.humidity);
+        
+        // Convert the temp to fahrenheit
+        var tempF = (response.main.temp - 273.15) * 1.80 + 32;
+
+        // add temp content to html
+        $(".temp").text("Temperature (K) " + response.main.temp);
+        $(".tempF").text("Temperature (F) " + tempF.toFixed(2));
+
+        // Log the data in the console as well
+        console.log("Wind Speed: " + response.wind.speed);
+        console.log("Humidity: " + response.main.humidity);
+        console.log("Temperature (F): " + tempF);
+
+
+
+
+
+
+
+      // Constructing HTML 
+
+      // Empty the contents of the weather-div, append the new weather content
+      $("#weather-div").empty();
+      $("#weather-div").append();
+    });
+  };
+
+
+
+
+
+  // Event handler for user clicking the select-weather button
+  $("#weather-current").on("click", function(event) {
+    // Preventing the button from trying to submit the form
+    event.preventDefault();
+    // Storing the location city name
+    var inputCity = $("#city-input").val().trim();
+
+    // Running the  function(passing in the cityname as an argument)
+    searchWeather(inputCity);
+  });
+
+
+
+</script>
+
+</html>

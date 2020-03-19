@@ -11,11 +11,29 @@
 
 <body>
 
-  <div id="geoLocation">Geolocation</div>
-  <h4>Please Wait for Coords to load before loading map!</h4>
-  <button id="loadMap">Load Map</button>
-  <div id="map"></div>
+  <button id="get-geolocation" class="controls">Current Location</button>
+  
+  <div style="display: none">
+    <input id="origin-input" class="controls" type="text"
+        placeholder="Enter an origin location">
+        
+    <input id="destination-input" class="controls" type="text"
+        placeholder="Enter a destination location">
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsn-wPrYsLFntG4WLpIGTa6bpdzODDJDQ" async defer></script>
+    <div id="mode-selector" class="controls">
+      <input type="radio" name="type" id="changemode-walking" checked="checked">
+      <label for="changemode-walking">Walking</label>
+
+      <input type="radio" name="type" id="changemode-transit">
+      <label for="changemode-transit">Transit</label>
+
+      <input type="radio" name="type" id="changemode-driving">
+      <label for="changemode-driving">Driving</label>
+    </div>
+</div>
+
+<div id="map"></div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsn-wPrYsLFntG4WLpIGTa6bpdzODDJDQ&libraries=places&callback=initMap" async defer></script>
 </body>
 </html>

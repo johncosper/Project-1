@@ -136,3 +136,43 @@ function initMap() {
           }
         });
   };
+
+  $(document).on('click', '#weather-search-button', function() {
+    getLocation();
+    getWeather();
+})
+
+  function getWeather() {
+
+    var key = "f15fc9d302b52500afaf375cf7812bcf";
+    var url = "https://api.openweathermap.org/data/2.5/forecast";
+    $.ajax ({
+        url: url,
+        dataType: "json",
+        type: "GET",
+        data: {
+          lat: userPosition.lat,
+          lon: userPosition.lon,
+          appid: key,
+          units: "imperial",
+          cnt: "1"
+        },
+        success: function(data) {
+          console.log('Received data:', data)
+          var weatherForcast = "";
+          weatherForcast += "<h2>" + data.city.name + "</h2>";
+          $.each(data.list, function(index, val) {
+              weatherForcast += "<p>"
+              weatherForcast += val.main.temp + "&degF |"
+              weatherForcast += ' wind speed: ' + val.wind.speed + 'mph |'
+              weatherForcast += ' humidity: ' + val.main.humidity + '%'
+              weatherForcast += "<span> | " + val.weather[0].description + "</span>";
+              weatherForcast += "<img src='https://openweathermap.org/img/w/" + val.weather[0].icon + ".png'>"
+              weatherForcast += "</p>"
+          });
+          $("#showWeatherForcast").html(weatherForcast);
+          
+        }
+      });
+
+};

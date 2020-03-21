@@ -23,7 +23,8 @@ function showPosition(position) {
     userPosition.lat = position.coords.latitude
     userPosition.lon = position.coords.longitude
     console.log(userPosition.lat, userPosition.lon);
-}
+
+};
 
 // Map functions
 
@@ -41,7 +42,7 @@ function initMap() {
     });
   
     new AutocompleteDirectionsHandler(map);
-  }
+}
   
   /**
    * @constructor

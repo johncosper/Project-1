@@ -1,7 +1,18 @@
+html {
+  scroll-behavior: smooth;
+}
+
 #map {
     height: 85%;
     width: 85%;
     margin: 2%;
+}
+
+.content {
+  height: 85%;
+  width: 85%;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 html, body {

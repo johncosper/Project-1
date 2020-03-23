@@ -1,0 +1,25 @@
+.first{
+    background: url("background.jpg");
+    background-size: 100%;
+}
+.Btn{
+ position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color:black;
+  color:white;
+  font-size: 48px;
+  padding: 16px 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 100px;
+  text-align: center;
+}
+.Btn:hover{
+    background-color: #03e9f4;
+    box-shadow: 0 0 5px #03e9f4;
+    color:#050801;
+}
+

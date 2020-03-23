@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lets Run</title>
+  <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
+  <link rel="stylesheet" href="map.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="script.js"></script>
+</head>
+
+<header id="navbar">
+
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="menu">
+        <li class="menu-text"></li>
+        <li><a href="#get-geolocation">Map your Route</a></li>
+        <li><a href="#weather-content">Weather Forecast</a></li>
+        <li><a href="#music-content">Pick your Music</a></li>
+      </ul>
+    </div>
+  </div>
+
+</header>
+
+<body>
+
+  <div class="callout medium primary">
+
+    <div class="row column text-center">
+      <h1>Lace It Up!</h1>
+      <h4 id="ready">Fetching Your Location, Please Wait...</h4>
+    </div>
+
+  </div>
+
+  <h4>Directions  <button id="get-geolocation" class="controls">Plan Your Route</button></h4>
+  
+  <div style="display: none">
+
+    <input id="origin-input" class="controls" type="text"
+        placeholder="Enter an origin location">
+        
+    <input id="destination-input" class="controls" type="text"
+        placeholder="Enter a destination location">
+
+    <div id="mode-selector" class="controls">
+
+      <input type="radio" name="type" id="changemode-walking" checked="checked">
+      <label for="changemode-walking">Walking</label>
+
+      <input type="radio" name="type" id="changemode-transit">
+      <label for="changemode-transit">Transit</label>
+
+      <input type="radio" name="type" id="changemode-driving">
+      <label for="changemode-driving">Driving</label>
+
+    </div>
+
+</div>
+
+<div id="map"></div>
+
+<div class="blog-post content" id="weather-content">
+
+  <h4>Weather Forecast  <button id="weather-search-button" class="controls">Check the Weather</button></h4>
+  <div id="showWeatherForcast"></div>
+
+</div> 
+
+<div class="blog-post content" id="music-content">
+
+  <h4>Music Selection  <input id="artist-search" placeholder="Artist Name"> <button id= "Music" class="controls"> Search Artist </button></h4>
+  <div id="showMusicData"></div>
+
+</div>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsn-wPrYsLFntG4WLpIGTa6bpdzODDJDQ&libraries=places" async defer></script>
+</body>
+</html>

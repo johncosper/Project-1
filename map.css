@@ -1,13 +1,41 @@
 #map {
     height: 85%;
-    width: 85%;
+    width: 96%;
     margin: 2%;
 }
 
-html, body {
+.content {
+  height: 30%;
+  width: 96%;
+  margin: 2%;
+}
+
+#showWeatherForcast, #showMusicData {
+  background-color: white;
+  text-align: center;
+  color: black;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
     height: 100%;
     margin: 0;
     padding: 0;
+    scroll-behavior: smooth;
+    font-family: sans-serif;
+    background-color: skyblue;
+    color: white;
+}
+
+.callout {
+  color: black;
+}
+
+#artist-search {
+  color: black;
 }
 
 .controls {

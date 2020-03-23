@@ -7,8 +7,8 @@ var userPosition = {
     lon: ''
 };
 
-$(document).on('click', '#get-geolocation', function() {
-    getLocation();
+$(document).ready(function() {
+  getLocation();
 });
 
 function getLocation() {
@@ -20,23 +20,29 @@ function getLocation() {
 }
 
 function showPosition(position) {
-    userPosition.lat = position.coords.latitude
-    userPosition.lon = position.coords.longitude
+    userPosition.lat = position.coords.latitude;
+    userPosition.lon = position.coords.longitude;
     console.log(userPosition.lat, userPosition.lon);
+    var load = document.getElementById('ready');
+    load.innerHTML = 'Latitude: ' + userPosition.lat.toFixed(2) + ' Longitude: ' + userPosition.lon.toFixed(2) + '';
 
 };
 
 // Map functions
 
+$(document).on('click', '#get-geolocation', function () {
+  initMap();
+})
+
 function initMap() {
     var map = new google.maps.Map(document.getElementById('map'), {
       mapTypeControl: false,
-      center: {lat: 38.9072, lng: -77.0369},
+      center: {lat: userPosition.lat, lng: userPosition.lon},
       zoom: 13
     });
 
     var marker = new google.maps.Marker( {
-        position: {lat: 38.9072, lng: -77.0369},
+        position: {lat: userPosition.lat, lng: userPosition.lon},
         map: map,
         title: 'User Location'
     });
@@ -138,7 +144,6 @@ function initMap() {
   };
 
   $(document).on('click', '#weather-search-button', function() {
-    getLocation();
     getWeather();
 })
 
@@ -176,3 +181,43 @@ function initMap() {
       });
 
 };
+
+
+$(document).on('click', '#Music', function() {
+  getMusic();
+})
+
+function getMusic() {
+  
+  var artist = $('#artist-search').val();
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://deezerdevs-deezer.p.rapidapi.com/artist/" + artist + '',
+    "method": "GET",
+    "headers": {
+      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+      "x-rapidapi-key": "a5e91296f3mshd9d2d514da719a0p153f54jsn03a6c7bb3fab"
+    }
+  }
+
+  $.ajax(settings).done(function (data) {
+    
+    console.log('Received data:', data)
+    var MusicData = "";
+    MusicData += "<h2>" + data.name + "</h2>";
+        MusicData += "<p>"
+        MusicData += '<img src=' + data.picture_medium + '';
+        MusicData += " </p>"
+        MusicData += "<h4>"
+        MusicData += '<a href=' + data.link + ' target=_blank>' + 'View Tracks' + '</a>'
+        MusicData += ' </h4>'
+    $("#showMusicData").html(MusicData);
+
+  });
+};
+
+
+
+
+

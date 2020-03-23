@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Test Map</title>
+  <title>Lets Run</title>
   <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
   <link rel="stylesheet" href="map.css">
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -16,7 +16,7 @@
     <div class="top-bar-left">
       <ul class="menu">
         <li class="menu-text"></li>
-        <li><a href="map.html">Map your Route</a></li>
+        <li><a href="#get-geolocation">Map your Route</a></li>
         <li><a href="#weather-content">Weather Forecast</a></li>
         <li><a href="#music-content">Pick your Music</a></li>
       </ul>
@@ -31,11 +31,12 @@
 
     <div class="row column text-center">
       <h1>Lace It Up!</h1>
+      <h4 id="ready">Fetching Your Location, Please Wait...</h4>
     </div>
 
   </div>
 
-  <h4>Plan Your Bliss  <button id="get-geolocation" class="controls">Current Location</button></h4>
+  <h4>Directions  <button id="get-geolocation" class="controls">Plan Your Route</button></h4>
   
   <div style="display: none">
 
@@ -71,11 +72,11 @@
 
 <div class="blog-post content" id="music-content">
 
-  <h4>Music Selection  <button id= "Music" class="controls"> Choose your Music </button></h4>
-  <img class="thumbnail" src="https://placehold.it/850x350">
+  <h4>Music Selection  <input id="artist-search" placeholder="Artist Name"> <button id= "Music" class="controls"> Search Artist </button></h4>
+  <div id="showMusicData"></div>
 
 </div>
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsn-wPrYsLFntG4WLpIGTa6bpdzODDJDQ&libraries=places&callback=initMap" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsn-wPrYsLFntG4WLpIGTa6bpdzODDJDQ&libraries=places" async defer></script>
 </body>
 </html>

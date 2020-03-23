@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 #map {
     height: 85%;
     width: 96%;
